@@ -1,4 +1,11 @@
-import { Controller } from '@nestjs/common';
+import { Controller, Get, Param, Post } from '@nestjs/common';
 
 @Controller('user')
-export class UserController {}
+export class UserController {
+    @Post("login")
+    login(@Param("id") id, @Param("pw") pw){
+        return {
+            success:true
+        };
+    }
+}
