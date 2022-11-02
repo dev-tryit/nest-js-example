@@ -1,11 +1,19 @@
-import { Controller, Get, Param, Post } from '@nestjs/common';
+import { Body, Controller, Get, Param, Post } from '@nestjs/common';
 
 @Controller('user')
 export class UserController {
     @Post("login")
-    login(@Param("id") id, @Param("pw") pw){
+    login(@Body() body){
+        const {id,pw} = body;
+        console.log(`user/login id:${id}, pw:${pw}`);
+        if(id==="a"&&pw==="1") {
+            return {
+                success:true
+            };
+        }
+
         return {
-            success:true
+            success:false
         };
     }
 }
